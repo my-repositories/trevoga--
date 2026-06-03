@@ -1,4 +1,5 @@
 set(src_files
+    process_utils.cpp
     hotkey.cpp
     main.cpp
 )
