@@ -45,6 +45,8 @@ Config LoadConfig(const std::string& filePath) {
         json j;
         file >> j;
 
+        config.showConsole = j.value("show_console", true);
+
         if (j.contains("actions") && j["actions"].is_array()) {
             for (const auto& item : j["actions"]) {
                 Action action;

@@ -1,11 +1,12 @@
 {
-  "actions": [
-    {
-      "hotkey": "CTRL+ALT+K",
-      "commands": [
-        "KillProcessByName obs64.exe",
-        "KillProcessByName chrome.exe"
-      ]
-    }
-  ]
+    "show_console": false,
+    "actions": [
+        {
+            "hotkey": "CTRL+ALT+K",
+            "commands": [
+                "KillProcessByName obs64.exe",
+                "KillProcessByName chrome.exe"
+            ]
+        }
+    ]
 }

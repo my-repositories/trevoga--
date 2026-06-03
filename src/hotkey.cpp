@@ -18,15 +18,9 @@ static BOOL WINAPI ConsoleHandler(DWORD signal) {
     return FALSE;
 }
 
-void StartHotkeyListener() {
+void StartHotkeyListener(const Config& config) {
     if (!SetConsoleCtrlHandler(ConsoleHandler, TRUE)) {
         std::cerr << "[Ошибка] Не удалось установить обработчик CTRL+C!" << std::endl;
-        return;
-    }
-
-    Config config = LoadConfig("config.json");
-    if (config.actions.empty()) {
-        std::cerr << "[Ошибка] Конфиг пуст или не найден config.json в текущей папке." << std::endl;
         return;
     }
 

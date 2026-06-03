@@ -15,6 +15,7 @@ struct Action {
 };
 
 struct Config {
+    bool showConsole = true;
     std::vector<Action> actions;
 };
 
