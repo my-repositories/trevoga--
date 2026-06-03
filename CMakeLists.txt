@@ -2,7 +2,7 @@
 # CMakeLists.txt. This is so that a user can clearly understand the reason the 
 # build will fail before the build actually occurs, instead of searching for the
 # CMake function that was used that is causing the failure.
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.5)
 
 # Set the global package-wide C++ standard. This will be inherited by all
 # targets specified in the project. One can also specify the C++ standard in a
@@ -37,7 +37,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 # Find LAPACK on the system. This is mostly for demonstration.
-find_package(LAPACK REQUIRED)
+# find_package(LAPACK REQUIRED)
 
 # Include source code and headers. This calls the CMakeLists.txt in each
 # subdirectory. These can define their own libraries, executables, etc. as targets, 
