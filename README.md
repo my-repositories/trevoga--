@@ -1,11 +1,51 @@
-# Trevoga-- by C++
+# Trevoga--
 
-## Compiling, installing and running your code
-To compile the project, run the following in the project root:
+Легкая и бесшумная фоновая утилита на C++ / WinAPI для мгновенного завершения работы выбранных программ с помощью глобальных горячих клавиш. Может работать в полностью скрытом режиме без окон и иконок в пуске.
+
+## Особенности
+* 🚀 **Мгновенно:** Убивает тяжелые процессы (OBS, браузеры, игры) в один клик.
+* 🥷 **Скрытно:** Опциональный фоновый режим без отображения на панели задач.
+* ⚙️ **Просто:** Вся настройка через удобный файл конфигурации `config.json`.
+
+## Настройка конфигурации (config.json)
+Файл должен лежать рядом с `TrevogaApp.exe`:
+
+```json
+{
+  "show_console": false,
+  "actions": [
+    {
+      "hotkey": "CTRL+ALT+K",
+      "commands": [
+        "KillProcessByName obs64.exe",
+        "KillProcessByName chrome.exe"
+      ]
+    }
+  ]
+}
 ```
-    mkdir build
-    cd build
-    rm CMakeCache.txt && rm -rf CMakeFiles && cmake ..
-    cmake --build . --config Release
-    ../bin/Release/TrevogaApp.exe 
+* **`show_console`** — `true` (показывать окно консоли и логи) или `false` (полностью скрытая работа в фоне).
+* **`actions`** — массив объектов, каждый из которых связывает один хоткей со списком выполняемых команд.
+    * **`hotkey`** — комбинация клавиш (поддерживаются модификаторы `CTRL`, `ALT`, `SHIFT`, `WIN`).
+    * **`commands`** — список команд на выполнение. Поддерживается формат `KillProcessByName имя_процесса.exe` для принудительного закрытия программы.
+
+
+## Сборка и запуск
+
+Для ручной компиляции проекта через Visual Studio / MSBuild выполните в корне репозитория:
+
+```bash
+# 1. Создаем папку сборки и генерируем файлы проекта
+mkdir build
+cd build
+cmake ..
+
+# 2. Компилируем оптимизированную Release-версию
+cmake --build . --config Release
+
+# 3. Запуск готового приложения
+../bin/Release/TrevogaApp.exe
 ```
+
+## Автоматические релизы
+При каждом пуше в ветку `main` настроенный GitHub Actions автоматически собирает свежий бинарник и обновляет файлы в секции **Releases** на странице репозитория.
