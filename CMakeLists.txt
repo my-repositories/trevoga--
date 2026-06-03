@@ -17,5 +17,14 @@ add_subdirectory(src)
 
 list(TRANSFORM PROJECT_SOURCES PREPEND "src/")
 
+include(FetchContent)
+FetchContent_Declare(
+    json
+    GIT_REPOSITORY https://github.com/nlohmann/json
+    GIT_TAG        v3.12.0
+)
+FetchContent_MakeAvailable(json)
+
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 target_compile_options(${PROJECT_NAME} PRIVATE /utf-8)
+target_link_libraries(TrevogaApp PRIVATE nlohmann_json::nlohmann_json)

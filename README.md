@@ -24,8 +24,9 @@ To compile the project, run the following in the project root:
 ```
     mkdir build
     cd build
-    cmake ..
+    rm CMakeCache.txt && rm -rf CMakeFiles && cmake ..
     cmake --build . --config Release
+    ../bin/Release/TrevogaApp.exe 
 ```
 To install the project in `/usr/local/`, run the following in the `build/` directory created above:
 ```

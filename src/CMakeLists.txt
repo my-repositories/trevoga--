@@ -1,4 +1,5 @@
 set(src_files
+    config_manager.cpp
     process_utils.cpp
     hotkey.cpp
     main.cpp

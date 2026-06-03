@@ -1,0 +1,11 @@
+{
+  "actions": [
+    {
+      "hotkey": "CTRL+ALT+K",
+      "commands": [
+        "KillProcessByName CalculatorApp.exe",
+        "KillProcessByName Notepad.exe"
+      ]
+    }
+  ]
+}

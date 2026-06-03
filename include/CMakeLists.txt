@@ -1,4 +1,5 @@
 set(CMakeDemo_INC
+    config_manager.hpp
     process_utils.hpp
     hotkey.hpp
 )

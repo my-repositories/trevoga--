@@ -19,8 +19,13 @@ void KillProcessByName(std::wstring_view processName) {
                 HANDLE hProcess = OpenProcess(PROCESS_TERMINATE, FALSE, pe.th32ProcessID);
                 if (hProcess != NULL) {
                     if (TerminateProcess(hProcess, 0)) {
-                        std::cout << "[Успех] Процесс " << pe.th32ProcessID << " (" 
-                                  << "CalculatorApp.exe) успешно закрыт." << std::endl;
+                        int size_needed = WideCharToMultiByte(CP_UTF8, 0, pe.szExeFile, -1, NULL, 0, NULL, NULL);
+                        std::string targetName(size_needed - 1, 0);
+                        WideCharToMultiByte(CP_UTF8, 0, pe.szExeFile, -1, &targetName[0], size_needed, NULL, NULL);
+                        
+                        std::cout << "[Успех] Процесс " << pe.th32ProcessID 
+                                  << " (" << targetName << ") успешно закрыт." << std::endl;
+     
                     } else {
                         std::cerr << "[Ошибка] Не удалось закрыть процесс. Код: " << GetLastError() << std::endl;
                     }
