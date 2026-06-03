@@ -1,18 +1,35 @@
+name: Build and Release
 
-name: build 
-
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build-ubuntu:
-    runs-on: ubuntu-latest
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
     steps:
-    - uses: actions/checkout@v1
-    - name: build and run
-      run: |
-        sudo apt install -y liblapack-dev
-        mkdir build
-        cd build
-        cmake .. -DCMAKE_BUILD_TYPE=Release
-        make -j
-        ctest
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+    - name: Build project
+      run: cmake --build build --config Release
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          bin/Release/TrevogaApp.exe
+          config.json
+        name: "Latest Auto Build"
+        tag_name: "latest"
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
