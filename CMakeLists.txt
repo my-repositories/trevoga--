@@ -13,6 +13,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 
 include_directories(include)
 
+set(WIN32_RESOURCES "${CMAKE_CURRENT_SOURCE_DIR}/cmake/app.rc")
+
 add_subdirectory(src)
 
 list(TRANSFORM PROJECT_SOURCES PREPEND "src/")
@@ -25,6 +27,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(json)
 
-add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+add_executable(${PROJECT_NAME} ${PROJECT_SOURCES} ${WIN32_RESOURCES})
 target_compile_options(${PROJECT_NAME} PRIVATE /utf-8)
 target_link_libraries(TrevogaApp PRIVATE nlohmann_json::nlohmann_json)
