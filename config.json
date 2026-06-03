@@ -3,8 +3,8 @@
     {
       "hotkey": "CTRL+ALT+K",
       "commands": [
-        "KillProcessByName CalculatorApp.exe",
-        "KillProcessByName Notepad.exe"
+        "KillProcessByName obs64.exe",
+        "KillProcessByName chrome.exe"
       ]
     }
   ]
