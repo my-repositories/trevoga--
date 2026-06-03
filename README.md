@@ -25,7 +25,7 @@ To compile the project, run the following in the project root:
     mkdir build
     cd build
     cmake ..
-    make
+    cmake --build . --config Release
 ```
 To install the project in `/usr/local/`, run the following in the `build/` directory created above:
 ```
